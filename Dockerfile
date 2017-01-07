@@ -7,7 +7,7 @@ MAINTAINER miniers
 
 RUN \
   apk --update --upgrade add \
-      privoxy
+      privoxy haproxy
 
 RUN buildDeps=" \
                 asciidoc \
@@ -37,8 +37,8 @@ RUN buildDeps=" \
         && apk del $buildDeps \
         && rm -rf /var/cache/apk/*
 
-ENV SERVER_ADDR= \
-    SERVER_PORT=8899  \
+ENV SERVER_ADDR=127.0.0.1 \
+    SERVER_PORT=1181  \
     METHOD=chacha20 \
     TIMEOUT=300 \
     PASSWORD=
